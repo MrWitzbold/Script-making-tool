@@ -6,6 +6,7 @@ local position_label = Instance.new("TextBox")
 local log_textbox = Instance.new("TextBox")
 local speed_button = Instance.new("TextButton")
 local speed_label = Instance.new("TextBox")
+local log_position_2 = Instance.new("TextButton")
 
 --Properties:
 
@@ -92,9 +93,21 @@ speed_label.Text = "speed"
 speed_label.TextColor3 = Color3.fromRGB(255, 255, 255)
 speed_label.TextSize = 14.000
 
+log_position_2.Name = "log_position"
+log_position_2.Parent = main
+log_position_2.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
+log_position_2.BorderColor3 = Color3.fromRGB(141, 0, 141)
+log_position_2.BorderSizePixel = 2
+log_position_2.Position = UDim2.new(0.0271317828, 0, 0.595348835, 0)
+log_position_2.Size = UDim2.new(0, 239, 0, 28)
+log_position_2.Font = Enum.Font.SourceSans
+log_position_2.Text = "E to noclip"
+log_position_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+log_position_2.TextSize = 14.000
+
 -- Scripts:
 
-local function YKFPWRS_fake_script() -- log_position.LocalScript 
+local function GYGER_fake_script() -- log_position.LocalScript 
 	local script = Instance.new('LocalScript', log_position)
 
 	function do_stuff()
@@ -106,8 +119,8 @@ local function YKFPWRS_fake_script() -- log_position.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(YKFPWRS_fake_script)()
-local function LDTQPTN_fake_script() -- speed_button.LocalScript 
+coroutine.wrap(GYGER_fake_script)()
+local function HQQN_fake_script() -- speed_button.LocalScript 
 	local script = Instance.new('LocalScript', speed_button)
 
 	function do_stuff()
@@ -116,4 +129,30 @@ local function LDTQPTN_fake_script() -- speed_button.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(LDTQPTN_fake_script)()
+coroutine.wrap(HQQN_fake_script)()
+local function CVRC_fake_script() -- log_position_2.LocalScript 
+	local script = Instance.new('LocalScript', log_position_2)
+
+	function do_stuff()
+		noclip = false
+		game:GetService('RunService').Stepped:connect(function()
+			if noclip then
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+			end
+		end)
+		plr = game.Players.LocalPlayer
+		mouse = plr:GetMouse()
+		mouse.KeyDown:connect(function(key)
+	
+			if key == "e" then
+				noclip = not noclip
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+			end
+		end)
+		print('Loaded')
+		print('Press "E" to noclip')
+	end
+	
+	script.Parent.MouseButton1Click:Connect(do_stuff)
+end
+coroutine.wrap(CVRC_fake_script)()
