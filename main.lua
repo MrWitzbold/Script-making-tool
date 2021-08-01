@@ -1,4 +1,4 @@
-local ScreenGui = Instance.new("ScreenGui")
+local vgbhnjm = Instance.new("ScreenGui")
 local main = Instance.new("Frame")
 local title = Instance.new("TextLabel")
 local log_position = Instance.new("TextButton")
@@ -6,15 +6,18 @@ local position_label = Instance.new("TextBox")
 local log_textbox = Instance.new("TextBox")
 local speed_button = Instance.new("TextButton")
 local speed_label = Instance.new("TextBox")
-local log_position_2 = Instance.new("TextButton")
+local noclip = Instance.new("TextButton")
+local ctrlclick = Instance.new("TextButton")
+local remote_spy = Instance.new("TextButton")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+vgbhnjm.Name = "vgbhnjm"
+vgbhnjm.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+vgbhnjm.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 main.Name = "main"
-main.Parent = ScreenGui
+main.Parent = vgbhnjm
 main.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
 main.BorderColor3 = Color3.fromRGB(141, 0, 141)
 main.BorderSizePixel = 4
@@ -93,21 +96,45 @@ speed_label.Text = "speed"
 speed_label.TextColor3 = Color3.fromRGB(255, 255, 255)
 speed_label.TextSize = 14.000
 
-log_position_2.Name = "log_position"
-log_position_2.Parent = main
-log_position_2.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
-log_position_2.BorderColor3 = Color3.fromRGB(141, 0, 141)
-log_position_2.BorderSizePixel = 2
-log_position_2.Position = UDim2.new(0.0271317828, 0, 0.595348835, 0)
-log_position_2.Size = UDim2.new(0, 239, 0, 28)
-log_position_2.Font = Enum.Font.SourceSans
-log_position_2.Text = "E to noclip"
-log_position_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-log_position_2.TextSize = 14.000
+noclip.Name = "noclip"
+noclip.Parent = main
+noclip.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
+noclip.BorderColor3 = Color3.fromRGB(141, 0, 141)
+noclip.BorderSizePixel = 2
+noclip.Position = UDim2.new(0.0271317828, 0, 0.595348835, 0)
+noclip.Size = UDim2.new(0, 239, 0, 28)
+noclip.Font = Enum.Font.SourceSans
+noclip.Text = "E to noclip"
+noclip.TextColor3 = Color3.fromRGB(0, 0, 0)
+noclip.TextSize = 14.000
+
+ctrlclick.Name = "ctrlclick"
+ctrlclick.Parent = main
+ctrlclick.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
+ctrlclick.BorderColor3 = Color3.fromRGB(141, 0, 141)
+ctrlclick.BorderSizePixel = 2
+ctrlclick.Position = UDim2.new(0.0271317828, 0, 0.674418628, 0)
+ctrlclick.Size = UDim2.new(0, 239, 0, 28)
+ctrlclick.Font = Enum.Font.SourceSans
+ctrlclick.Text = "Ctrl + left click to print part's ancestry"
+ctrlclick.TextColor3 = Color3.fromRGB(0, 0, 0)
+ctrlclick.TextSize = 14.000
+
+remote_spy.Name = "remote_spy"
+remote_spy.Parent = main
+remote_spy.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
+remote_spy.BorderColor3 = Color3.fromRGB(141, 0, 141)
+remote_spy.BorderSizePixel = 2
+remote_spy.Position = UDim2.new(0.0271317828, 0, 0.753488421, 0)
+remote_spy.Size = UDim2.new(0, 239, 0, 28)
+remote_spy.Font = Enum.Font.SourceSans
+remote_spy.Text = "Remote spy"
+remote_spy.TextColor3 = Color3.fromRGB(0, 0, 0)
+remote_spy.TextSize = 14.000
 
 -- Scripts:
 
-local function GYGER_fake_script() -- log_position.LocalScript 
+local function IGJLCQ_fake_script() -- log_position.LocalScript 
 	local script = Instance.new('LocalScript', log_position)
 
 	function do_stuff()
@@ -119,8 +146,8 @@ local function GYGER_fake_script() -- log_position.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(GYGER_fake_script)()
-local function HQQN_fake_script() -- speed_button.LocalScript 
+coroutine.wrap(IGJLCQ_fake_script)()
+local function TLAX_fake_script() -- speed_button.LocalScript 
 	local script = Instance.new('LocalScript', speed_button)
 
 	function do_stuff()
@@ -129,9 +156,9 @@ local function HQQN_fake_script() -- speed_button.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(HQQN_fake_script)()
-local function CVRC_fake_script() -- log_position_2.LocalScript 
-	local script = Instance.new('LocalScript', log_position_2)
+coroutine.wrap(TLAX_fake_script)()
+local function CHFNT_fake_script() -- noclip.LocalScript 
+	local script = Instance.new('LocalScript', noclip)
 
 	function do_stuff()
 		noclip = false
@@ -155,4 +182,21 @@ local function CVRC_fake_script() -- log_position_2.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(CVRC_fake_script)()
+coroutine.wrap(CHFNT_fake_script)()
+local function CDDQT_fake_script() -- ctrlclick.LocalScript 
+	local script = Instance.new('LocalScript', ctrlclick)
+
+	function do_stuff()
+		local Plr = game:GetService("Players").LocalPlayer
+		local Mouse = Plr:GetMouse()
+	
+		Mouse.Button1Down:connect(function()
+			if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+			if not Mouse.Target then return end
+			print(Mouse.Target:GetFullName())
+		end)
+	end
+	
+	script.Parent.MouseButton1Click:Connect(do_stuff)
+end
+coroutine.wrap(CDDQT_fake_script)()
