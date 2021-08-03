@@ -8,7 +8,10 @@ local speed_button = Instance.new("TextButton")
 local speed_label = Instance.new("TextBox")
 local noclip = Instance.new("TextButton")
 local ctrlclick = Instance.new("TextButton")
-local remote_spy = Instance.new("TextButton")
+local part_ancestry = Instance.new("TextBox")
+local TextLabel = Instance.new("TextLabel")
+local open_close = Instance.new("Frame")
+local open_close_button = Instance.new("TextButton")
 
 --Properties:
 
@@ -120,21 +123,54 @@ ctrlclick.Text = "Ctrl + left click to print part's ancestry"
 ctrlclick.TextColor3 = Color3.fromRGB(0, 0, 0)
 ctrlclick.TextSize = 14.000
 
-remote_spy.Name = "remote_spy"
-remote_spy.Parent = main
-remote_spy.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
-remote_spy.BorderColor3 = Color3.fromRGB(141, 0, 141)
-remote_spy.BorderSizePixel = 2
-remote_spy.Position = UDim2.new(0.0271317828, 0, 0.753488421, 0)
-remote_spy.Size = UDim2.new(0, 239, 0, 28)
-remote_spy.Font = Enum.Font.SourceSans
-remote_spy.Text = "Remote spy"
-remote_spy.TextColor3 = Color3.fromRGB(0, 0, 0)
-remote_spy.TextSize = 14.000
+part_ancestry.Name = "part_ancestry"
+part_ancestry.Parent = main
+part_ancestry.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+part_ancestry.BorderSizePixel = 0
+part_ancestry.Position = UDim2.new(0.0271317828, 0, 0.753488362, 0)
+part_ancestry.Size = UDim2.new(0, 239, 0, 100)
+part_ancestry.ClearTextOnFocus = false
+part_ancestry.Font = Enum.Font.SourceSans
+part_ancestry.MultiLine = true
+part_ancestry.Text = ""
+part_ancestry.TextColor3 = Color3.fromRGB(255, 255, 255)
+part_ancestry.TextScaled = true
+part_ancestry.TextSize = 14.000
+part_ancestry.TextWrapped = true
+
+TextLabel.Parent = main
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0.480620146, 0, 1, 0)
+TextLabel.Size = UDim2.new(0, 134, 0, 44)
+TextLabel.Font = Enum.Font.Antique
+TextLabel.Text = "JUKjacker"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 50.000
+TextLabel.TextWrapped = true
+
+open_close.Name = "open_close"
+open_close.Parent = vgbhnjm
+open_close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+open_close.BackgroundTransparency = 1.000
+open_close.Size = UDim2.new(0, 100, 0, 100)
+
+open_close_button.Name = "open_close_button"
+open_close_button.Parent = open_close
+open_close_button.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
+open_close_button.BorderColor3 = Color3.fromRGB(141, 0, 141)
+open_close_button.BorderSizePixel = 2
+open_close_button.Position = UDim2.new(7.04891491, 0, 0.318837225, 0)
+open_close_button.Size = UDim2.new(0, 76, 0, 28)
+open_close_button.Font = Enum.Font.SourceSans
+open_close_button.Text = "Hide"
+open_close_button.TextColor3 = Color3.fromRGB(0, 0, 0)
+open_close_button.TextSize = 20.000
 
 -- Scripts:
 
-local function IGJLCQ_fake_script() -- log_position.LocalScript 
+local function HPVLHR_fake_script() -- log_position.LocalScript 
 	local script = Instance.new('LocalScript', log_position)
 
 	function do_stuff()
@@ -146,8 +182,8 @@ local function IGJLCQ_fake_script() -- log_position.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(IGJLCQ_fake_script)()
-local function TLAX_fake_script() -- speed_button.LocalScript 
+coroutine.wrap(HPVLHR_fake_script)()
+local function QWWY_fake_script() -- speed_button.LocalScript 
 	local script = Instance.new('LocalScript', speed_button)
 
 	function do_stuff()
@@ -156,8 +192,8 @@ local function TLAX_fake_script() -- speed_button.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(TLAX_fake_script)()
-local function CHFNT_fake_script() -- noclip.LocalScript 
+coroutine.wrap(QWWY_fake_script)()
+local function DCDKJU_fake_script() -- noclip.LocalScript 
 	local script = Instance.new('LocalScript', noclip)
 
 	function do_stuff()
@@ -182,8 +218,8 @@ local function CHFNT_fake_script() -- noclip.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(CHFNT_fake_script)()
-local function CDDQT_fake_script() -- ctrlclick.LocalScript 
+coroutine.wrap(DCDKJU_fake_script)()
+local function LBIVRVP_fake_script() -- ctrlclick.LocalScript 
 	local script = Instance.new('LocalScript', ctrlclick)
 
 	function do_stuff()
@@ -193,10 +229,27 @@ local function CDDQT_fake_script() -- ctrlclick.LocalScript
 		Mouse.Button1Down:connect(function()
 			if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
 			if not Mouse.Target then return end
+			script.Parent.Parent.part_ancestry.Text = script.Parent.Parent.part_ancestry.Text .. "\n" .. Mouse.Target:GetFullName() .. "\n"
 			print(Mouse.Target:GetFullName())
 		end)
 	end
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(CDDQT_fake_script)()
+coroutine.wrap(LBIVRVP_fake_script)()
+local function MHNOYIP_fake_script() -- open_close_button.LocalScript 
+	local script = Instance.new('LocalScript', open_close_button)
+
+	function do_stuff()
+		if script.Parent.Parent.Parent.main.Visible == true then
+			script.Parent.Parent.Parent.main.Visible = false
+			script.Parent.Text = "Show"
+		else
+			script.Parent.Parent.Parent.main.Visible = true
+			script.Parent.Text = "Hide"
+		end
+	end
+	
+	script.Parent.MouseButton1Click:Connect(do_stuff)
+end
+coroutine.wrap(MHNOYIP_fake_script)() 
