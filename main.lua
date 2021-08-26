@@ -10,6 +10,7 @@ local noclip = Instance.new("TextButton")
 local ctrlclick = Instance.new("TextButton")
 local part_ancestry = Instance.new("TextBox")
 local TextLabel = Instance.new("TextLabel")
+local get_game_files = Instance.new("TextButton")
 local open_close = Instance.new("Frame")
 local open_close_button = Instance.new("TextButton")
 
@@ -104,8 +105,8 @@ noclip.Parent = main
 noclip.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
 noclip.BorderColor3 = Color3.fromRGB(141, 0, 141)
 noclip.BorderSizePixel = 2
-noclip.Position = UDim2.new(0.0271317828, 0, 0.595348835, 0)
-noclip.Size = UDim2.new(0, 239, 0, 28)
+noclip.Position = UDim2.new(0.0271317828, 0, 0.595348775, 0)
+noclip.Size = UDim2.new(0, 117, 0, 28)
 noclip.Font = Enum.Font.SourceSans
 noclip.Text = "E to noclip"
 noclip.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -150,6 +151,18 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 50.000
 TextLabel.TextWrapped = true
 
+get_game_files.Name = "get_game_files"
+get_game_files.Parent = main
+get_game_files.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
+get_game_files.BorderColor3 = Color3.fromRGB(141, 0, 141)
+get_game_files.BorderSizePixel = 2
+get_game_files.Position = UDim2.new(0.515503883, 0, 0.595348775, 0)
+get_game_files.Size = UDim2.new(0, 113, 0, 28)
+get_game_files.Font = Enum.Font.SourceSans
+get_game_files.Text = "Get game files"
+get_game_files.TextColor3 = Color3.fromRGB(0, 0, 0)
+get_game_files.TextSize = 14.000
+
 open_close.Name = "open_close"
 open_close.Parent = vgbhnjm
 open_close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -161,7 +174,7 @@ open_close_button.Parent = open_close
 open_close_button.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
 open_close_button.BorderColor3 = Color3.fromRGB(141, 0, 141)
 open_close_button.BorderSizePixel = 2
-open_close_button.Position = UDim2.new(7.04891491, 0, 0.318837225, 0)
+open_close_button.Position = UDim2.new(6.75891495, 0, 0.268837214, 0)
 open_close_button.Size = UDim2.new(0, 76, 0, 28)
 open_close_button.Font = Enum.Font.SourceSans
 open_close_button.Text = "Hide"
@@ -170,7 +183,7 @@ open_close_button.TextSize = 20.000
 
 -- Scripts:
 
-local function HPVLHR_fake_script() -- log_position.LocalScript 
+local function PHREH_fake_script() -- log_position.LocalScript 
 	local script = Instance.new('LocalScript', log_position)
 
 	function do_stuff()
@@ -182,8 +195,8 @@ local function HPVLHR_fake_script() -- log_position.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(HPVLHR_fake_script)()
-local function QWWY_fake_script() -- speed_button.LocalScript 
+coroutine.wrap(PHREH_fake_script)()
+local function MYDO_fake_script() -- speed_button.LocalScript 
 	local script = Instance.new('LocalScript', speed_button)
 
 	function do_stuff()
@@ -192,8 +205,8 @@ local function QWWY_fake_script() -- speed_button.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(QWWY_fake_script)()
-local function DCDKJU_fake_script() -- noclip.LocalScript 
+coroutine.wrap(MYDO_fake_script)()
+local function HASXGR_fake_script() -- noclip.LocalScript 
 	local script = Instance.new('LocalScript', noclip)
 
 	function do_stuff()
@@ -218,8 +231,8 @@ local function DCDKJU_fake_script() -- noclip.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(DCDKJU_fake_script)()
-local function LBIVRVP_fake_script() -- ctrlclick.LocalScript 
+coroutine.wrap(HASXGR_fake_script)()
+local function XJISV_fake_script() -- ctrlclick.LocalScript 
 	local script = Instance.new('LocalScript', ctrlclick)
 
 	function do_stuff()
@@ -236,8 +249,35 @@ local function LBIVRVP_fake_script() -- ctrlclick.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(LBIVRVP_fake_script)()
-local function MHNOYIP_fake_script() -- open_close_button.LocalScript 
+coroutine.wrap(XJISV_fake_script)()
+local function XVKPBEZ_fake_script() -- get_game_files.LocalScript 
+	local script = Instance.new('LocalScript', get_game_files)
+
+	function do_stuff()
+		local inside_objects = 0
+		local function iterate_in(object)
+			for i,v in pairs(object:GetChildren()) do
+				if v:IsA("Folder") or v:IsA("Model") then
+					iterate_in(v)
+				end
+				if i == #object:GetChildren() then
+					inside_objects = 0
+				end
+				for i = 1,inside_objects do
+					script.Parent.Parent.part_ancestry.Text = script.Parent.Parent.part_ancestry.Text .. "	"
+				end
+				script.Parent.Parent.part_ancestry.Text = script.Parent.Parent.part_ancestry.Text .. v:GetFullName() .. " (" .. tostring(v.className) .. ")\n"
+				inside_objects += 1
+				wait(0.00001)
+			end
+		end
+		iterate_in(game)
+	end
+	
+	script.Parent.MouseButton1Click:Connect(do_stuff)
+end
+coroutine.wrap(XVKPBEZ_fake_script)()
+local function SSYCSUO_fake_script() -- open_close_button.LocalScript 
 	local script = Instance.new('LocalScript', open_close_button)
 
 	function do_stuff()
@@ -252,4 +292,4 @@ local function MHNOYIP_fake_script() -- open_close_button.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(MHNOYIP_fake_script)() 
+coroutine.wrap(SSYCSUO_fake_script)()
