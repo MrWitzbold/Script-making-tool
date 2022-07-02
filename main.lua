@@ -1,3 +1,44 @@
+
+function make_draggable(gui)
+	local UserInputService = game:GetService("UserInputService")
+
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+
 local vgbhnjm = Instance.new("ScreenGui")
 local main = Instance.new("Frame")
 local title = Instance.new("TextLabel")
@@ -11,8 +52,6 @@ local ctrlclick = Instance.new("TextButton")
 local part_ancestry = Instance.new("TextBox")
 local TextLabel = Instance.new("TextLabel")
 local get_game_files = Instance.new("TextButton")
-local open_close = Instance.new("Frame")
-local open_close_button = Instance.new("TextButton")
 
 --Properties:
 
@@ -163,27 +202,9 @@ get_game_files.Text = "Get game files"
 get_game_files.TextColor3 = Color3.fromRGB(0, 0, 0)
 get_game_files.TextSize = 14.000
 
-open_close.Name = "open_close"
-open_close.Parent = vgbhnjm
-open_close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-open_close.BackgroundTransparency = 1.000
-open_close.Size = UDim2.new(0, 100, 0, 100)
-
-open_close_button.Name = "open_close_button"
-open_close_button.Parent = open_close
-open_close_button.BackgroundColor3 = Color3.fromRGB(236, 80, 236)
-open_close_button.BorderColor3 = Color3.fromRGB(141, 0, 141)
-open_close_button.BorderSizePixel = 2
-open_close_button.Position = UDim2.new(6.75891495, 0, 0.268837214, 0)
-open_close_button.Size = UDim2.new(0, 76, 0, 28)
-open_close_button.Font = Enum.Font.SourceSans
-open_close_button.Text = "Hide"
-open_close_button.TextColor3 = Color3.fromRGB(0, 0, 0)
-open_close_button.TextSize = 20.000
-
 -- Scripts:
 
-local function PHREH_fake_script() -- log_position.LocalScript 
+local function ZGOWB_fake_script() -- log_position.LocalScript 
 	local script = Instance.new('LocalScript', log_position)
 
 	function do_stuff()
@@ -195,8 +216,8 @@ local function PHREH_fake_script() -- log_position.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(PHREH_fake_script)()
-local function MYDO_fake_script() -- speed_button.LocalScript 
+coroutine.wrap(ZGOWB_fake_script)()
+local function KSARQT_fake_script() -- speed_button.LocalScript 
 	local script = Instance.new('LocalScript', speed_button)
 
 	function do_stuff()
@@ -205,8 +226,8 @@ local function MYDO_fake_script() -- speed_button.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(MYDO_fake_script)()
-local function HASXGR_fake_script() -- noclip.LocalScript 
+coroutine.wrap(KSARQT_fake_script)()
+local function RYJQHW_fake_script() -- noclip.LocalScript 
 	local script = Instance.new('LocalScript', noclip)
 
 	function do_stuff()
@@ -231,8 +252,8 @@ local function HASXGR_fake_script() -- noclip.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(HASXGR_fake_script)()
-local function XJISV_fake_script() -- ctrlclick.LocalScript 
+coroutine.wrap(RYJQHW_fake_script)()
+local function ECTO_fake_script() -- ctrlclick.LocalScript 
 	local script = Instance.new('LocalScript', ctrlclick)
 
 	function do_stuff()
@@ -249,8 +270,8 @@ local function XJISV_fake_script() -- ctrlclick.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(XJISV_fake_script)()
-local function XVKPBEZ_fake_script() -- get_game_files.LocalScript 
+coroutine.wrap(ECTO_fake_script)()
+local function NPUEX_fake_script() -- get_game_files.LocalScript 
 	local script = Instance.new('LocalScript', get_game_files)
 
 	function do_stuff()
@@ -276,20 +297,7 @@ local function XVKPBEZ_fake_script() -- get_game_files.LocalScript
 	
 	script.Parent.MouseButton1Click:Connect(do_stuff)
 end
-coroutine.wrap(XVKPBEZ_fake_script)()
-local function SSYCSUO_fake_script() -- open_close_button.LocalScript 
-	local script = Instance.new('LocalScript', open_close_button)
+coroutine.wrap(NPUEX_fake_script)()
 
-	function do_stuff()
-		if script.Parent.Parent.Parent.main.Visible == true then
-			script.Parent.Parent.Parent.main.Visible = false
-			script.Parent.Text = "Show"
-		else
-			script.Parent.Parent.Parent.main.Visible = true
-			script.Parent.Text = "Hide"
-		end
-	end
-	
-	script.Parent.MouseButton1Click:Connect(do_stuff)
-end
-coroutine.wrap(SSYCSUO_fake_script)()
+make_draggable(main)
+vgbhnjm.ResetOnSpawn = false
